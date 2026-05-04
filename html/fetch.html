@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function Getcomments(){
+        var url = "https://jsonplaceholder.typicode.com/comments";
+        fetch(url).then(responsetype => responsetype.json())
+       .then(result =>{
+        // result.forEach(comment =>{
+        //     console.log(comment);
+        //     // document.getElementById("comment").innerHTML = result[2].body;
+        // } );
+        document.getElementById("comment").innerHTML = result.body;
+       })
+       .catch(error =>{
+        alert('error');
+       })
+    }
+
+    function Getposts(){
+        var url = "https://jsonplaceholder.typicode.com/posts";
+        fetch(url).then(responsetype => responsetype.json())
+       .then(result =>{
+        result.forEach(post =>{
+            console.log(post);
+            document.getElementById("comment").innerHTML = post.title;
+        } );
+        // document.getElementById("comment").innerHTML = result[0].title;
+       })
+       .catch(error =>{
+        alert('error');
+       })
+    }
+
+    // function getUser(){
+    //     var url = "https://jsonplaceholder.typicode.com/users";
+    //     fetch(url).then(res => res.json())
+    //     .then(result =>{
+    //         result.forEach(user =>{
+    //                 document.getElementById("user").innerHTML = user.name;
+    //                 document.getElementById("user").innerHTML = user.id;
+    //                 document.getElementById("user").innerHTML = user.email;
+    //                 document.getElementById("user").innerHTML = user.address.city;
+    //         })
+            
+    //     })
+
+    // }
+</script>
+<body>
+    <button onclick="Getcomments()">get commment</button>
+<button onclick="Getposts()">get post</button>
+<button onclick="getUser();">get user</button>
+    <p id="comment"></p>
+    <p id="user"> </p>
+</body>
+</html>

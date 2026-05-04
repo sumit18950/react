@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Demo</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            $('h1').hover(function(){
+                $(this).css('color','orange');
+            })
+
+            $('h1').mouseout(function(){
+                $(this).css('color','black');
+            })
+
+            $("#btn1").click(function(){
+                console.log('I am a click event from JQuery');
+                alert('this is so simple');
+                $('#pTest').text('This is so very simple not clubbing HTML and JS');
+            })
+
+            $('#btn2').click(function(){
+
+                    alert('working');
+                var num1 = parseInt($('#txt1').val());
+                var num2 =parseInt($('#txt2').val());
+
+                var addition =  num1 + num2;
+                var subtraction = num1 - num2;
+                var multiplication = num1 * num2;
+                var division = num1 / num2;
+
+                $('#add').text('Addition is ' + addition);                
+                $('#sub').text('subtraction is : ' + subtraction);                
+                $('#mul').text('Multiplication is : ' + multiplication);                
+                $('#div').text('Division is : ' + division);
+
+
+
+            })
+
+        })
+    </script>
+
+
+</head>
+<body>
+    <p id="pTest"></p>
+    <h1> I am a header </h1>
+    <h1> I am a header </h1>
+    <h1> I am a header </h1>
+    <h1> I am a header </h1>
+    <h1> I am a header </h1>
+    <h1> I am a header </h1>
+
+    <button id="btn1"> Btn 1</button>
+   
+    <button id="btn3"> Btn 1</button>
+
+
+        <input type="number" placeholder="Enter First Number" id="txt1"/>
+        <input type="number" placeholder="Enter Second Number" id="txt2"/>
+         <button id="btn2"> Btn 2</button>
+
+         <h4 id="add"></h4>
+         <h4 id="sub"></h4>
+         <h4 id="mul"></h4>
+         <h4 id="div"></h4>
+
+</body>
+</html>

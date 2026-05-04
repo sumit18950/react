@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CTC Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h2>CTC Calculator</h2>
+
+    <label><input type="radio" name="gender" value="Male"> Male</label>
+    <label><input type="radio" name="gender" value="Female"> Female</label>
+    <br><br>
+
+    <label>Basic Monthly Salary: </label>
+    <input type="text" id="basic" placeholder="Enter basic salary">
+    <p id="message"></p>
+
+    <script>
+        $(document).ready(function(){
+            // Trigger calculation when user leaves the textbox (on blur)
+            $("#basic").on("blur", function(){
+                let basic = parseFloat($("#basic").val());
+                let gender = $("input[name='gender']:checked").val();
+
+                // Validation
+                if (!gender) {
+                    $("#message").html("Please select Male or Female").addClass("error");
+                    return;
+                }
+                if (isNaN(basic) || basic < 3000) {
+                    $("#message").html("Basic salary must be at least 3000").addClass("error");
+                    return;
+                }
+
+                // Allowances
+                let pf = 1200;
+                let ta = 1000;
+                let da = 0.075 * basic;
+
+                // Gross monthly
+                let gross = basic + pf + ta + da;
+
+                // Tax based on gender
+                let taxRate = (gender === "Female") ? 0.08 : 0.12;
+                let netMonthly = gross - (gross * taxRate);
+
+                // Annual CTC
+                let annualCTC = netMonthly * 12;
+
+                // Show result
+                $("#message").removeClass("error")
+                             .html("Annual CTC: ₹" + annualCTC.toFixed(2));
+            });
+        });
+    </script>
+</body>
+</html>
